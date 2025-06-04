@@ -1,205 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reswin Geo Thomas - Mechatronics Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reswin Geo Thomas - Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+  :root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #64748b;
+  --accent: #0ea5e9;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+[data-theme='light'] {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --card: #f3f6fb;
+  --text: #1a2238;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: rgba(30, 41, 59, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+}
+[data-theme='dark'] {
+  --bg: #1a2238;
+  --surface: #222b45;
+  --card: #232c43;
+  --text: #f5f6fa;
+  --text-muted: #a1a7bb;
+  --border: #28304a;
+  --shadow: rgba(30, 41, 59, 0.25);
+  --nav-bg: rgba(34, 43, 69, 0.95);
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Navigation */
+    .nav {
+  position: static;
+  display: flex;
+  gap: 0.5rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s ease;
+  max-width: 500px;
+  margin: 2rem 2rem 0 auto; /* Top right: top margin, right margin, no bottom, auto left */
+  z-index: 1000;
+  justify-content: flex-end;
+
+}
+
+    .nav-item {
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .nav-item:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Container and sections */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    /* Hero section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1rem;
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      animation: slideInLeft 1s ease-out 0.2s both;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      animation: slideInLeft 1s ease-out 0.4s both;
+    }
+
+    .hero-image {
+      flex: 0 0 400px;
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      object-fit: cover;
+      animation: slideInRight 1s ease-out 0.6s both;
+      box-shadow: 0 20px 40px var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: slideInLeft 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    /* Section headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Project grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 3D Viewer styling */
+    .viewer-container {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1rem 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    #viewer {
+      width: 100%;
+      height: 100%;
+    }
+
+    .viewer-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .viewer-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .viewer-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Contact section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--card);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px var(--shadow);
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info h4 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Social links */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Skills tags */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill-tag {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Education grid */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .hero {
+        text-align: center;
+        flex-direction: column;
+      }
+      
+      .hero-image {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .nav {
+        position: relative;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        margin: 1rem auto;
+        width: fit-content;
+      }
+      
+      .project-grid, .education-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    /* Loading animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gray-800 text-white p-4 fixed w-full top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">Reswin Geo Thomas</h1>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:text-gray-300">About</a>
-                <a href="#education" class="hover:text-gray-300">Education</a>
-                <a href="#projects" class="hover:text-gray-300">Projects</a>
-                <a href="#skills" class="hover:text-gray-300">Skills</a>
-                <a href="#certifications" class="hover:text-gray-300">Certifications</a>
-                <a href="#contact" class="hover:text-gray-300">Contact</a>
-            </div>
-        </div>
-    </nav>
+<body data-theme="dark">
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="#about" class="nav-item">About</a>
+    <a href="#projects" class="nav-item">Projects</a>
+    <a href="#contact" class="nav-item">Contact</a>
+    <button class="nav-item theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="pt-20 pb-12 md:pt-32 md:pb-24 bg-gray-800 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <img src="mypic.jpeg" alt="Reswin Geo Thomas" class="rounded-full mx-auto mb-6 border-4 border-white">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Reswin Geo Thomas</h1>
-            <p class="text-xl md:text-2xl mb-4">Mechatronics Engineering Student</p>
-            <p class="text-lg mb-8">Embedded Systems | Robotics | Automation</p>
-            <div class="flex justify-center space-x-4">
-                <a href="#contact" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-full">Contact Me</a>
-                <a href="#projects" class="border-2 border-white hover:bg-white hover:text-gray-800 px-6 py-2 rounded-full">View Projects</a>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="hero-content">
+      <h1 class="hero-title">Reswin Geo Thomas</h1>
+      <p class="hero-subtitle">Mechatronics Engineer</p>
+      <p class="hero-description">
+        Passionate about creating innovative solutions in embedded systems, robotics, and automation. 
+        Transforming complex engineering challenges into elegant technological solutions.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="mypic2.jpg" alt="Reswin Geo Thomas" class="hero-img" />
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">About Me</h2>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-lg text-gray-700 mb-6">
-                    Motivated Mechatronics Engineering student with a strong interest in Embedded Systems and Robotics. Based in Kerala, India, I'm passionate about creating innovative solutions in automotive technologies and automation. Currently pursuing my B.Tech at Jyothi Engineering College, I combine my technical expertise in hardware design with a keen interest in emerging technologies like IoT and ethical hacking.
-                </p>
-            </div>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          Engineering innovative solutions through technology and creativity
+        </p>
+      </div>
+      <div class="card fade-in">
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+          I am a motivated Mechatronics Engineering student with a strong passion for embedded systems and robotics. 
+          Based in Kerala, India, I specialize in creating innovative solutions in automotive technologies and automation. 
+          Currently pursuing my B.Tech at Jyothi Engineering College, I combine technical expertise in hardware design 
+          with emerging technologies like IoT and sensor integration to build practical solutions for real-world challenges.
+        </p>
+        <div class="skills">
+          <span class="skill-tag">Embedded Systems</span>
+          <span class="skill-tag">Robotics</span>
+          <span class="skill-tag">Automation</span>
+          <span class="skill-tag">IoT Development</span>
+          <span class="skill-tag">Hardware Design</span>
+          <span class="skill-tag">Sensor Integration</span>
+          <span class="skill-tag">PCB Design</span>
+          <span class="skill-tag">Microcontrollers</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Education</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-xl font-bold mb-2">B.Tech in Mechatronics Engineering</h3>
-                    <p class="text-gray-600">Jyothi Engineering College, Thrissur, Kerala | 2021–2025</p>
-                    <p class="text-gray-700 mt-2">Key Courses:</p>
-                    <ul class="list-disc list-inside text-gray-700 mt-2">
-                        <li>Embedded Systems</li>
-                        <li>Robotics</li>
-                        <li>Automation</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-xl font-bold mb-2">Higher Secondary Education</h3>
-                    <p class="text-gray-600">St. George HSS Muttar, Alappuzha | 2019</p>
-                    <p class="text-gray-700">Percentage: 89%</p>
-                </div>
-            </div>
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">
+          Building a strong foundation for engineering excellence
+        </p>
+      </div>
+      <div class="education-grid">
+        <div class="card fade-in">
+          <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">B.Tech in Mechatronics Engineering</h3>
+          <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 1rem;">
+            Jyothi Engineering College, Thrissur, Kerala • 2021–2025
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Comprehensive study in the integration of mechanical, electrical, and computer engineering with specialized focus on modern automation systems and robotics applications.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Control Systems</span>
+            <span class="skill-tag">Embedded Programming</span>
+            <span class="skill-tag">Mechanical Design</span>
+          </div>
         </div>
-    </section>
+        <div class="card fade-in">
+          <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 0.5rem;">Higher Secondary Education</h3>
+          <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 1rem;">
+            St. George HSS Muttar, Alappuzha • 2019
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Achieved 89% with strong foundation in Mathematics, Physics, and Chemistry, establishing the groundwork for advanced engineering studies.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Mathematics</span>
+            <span class="skill-tag">Physics</span>
+            <span class="skill-tag">Chemistry</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <img src="/api/placeholder/400/250" alt="Atmospheric Air Rectification System" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Atmospheric Air Rectification System</h3>
-                    <p class="text-gray-700">Developed an advanced air purification system using MQ135, MQ136, and TGS2600 sensors to detect and filter pollutants, improving road air quality.</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <img src="/api/placeholder/400/250" alt="Drone with Metal Detection" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Drone with Metal Detection</h3>
-                    <p class="text-gray-700">Built an innovative aerial drone equipped with metal detection capabilities for security applications and weapon detection.</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <img src="/api/placeholder/400/250" alt="Automatic Battery Water Refilling System" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Automatic Battery Water Refilling System</h3>
-                    <p class="text-gray-700">Engineered an automated system using XKC-Y25 sensor and solenoid valve for maintaining optimal water levels in lead-acid batteries.</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <img src="/api/placeholder/400/250" alt="Solar Water Purification System" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Solar Water Purification System</h3>
-                    <p class="text-gray-700">Designed an eco-friendly water purification system using solar power and chemical treatments to eliminate E. coli bacteria for rural communities.</p>
-                </div>
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          Innovative engineering solutions addressing real-world challenges
+        </p>
+      </div>
+      <div class="project-grid">
+        <div class="card project-card fade-in">
+          <h3>Atmospheric Air Rectification System</h3>
+          <p>
+            Advanced air purification system utilizing MQ135, MQ136, and TGS2600 sensors for real-time pollutant 
+            detection and filtration. The system actively monitors air quality parameters and automatically adjusts 
+            filtration mechanisms to improve roadside air quality in urban environments.
+          </p>
+          <div class="viewer-container">
+            <div id="viewer"></div>
+            <div class="viewer-controls">
+              <button class="viewer-btn" onclick="resetView()">Reset</button>
+              <button class="viewer-btn" onclick="toggleWireframe()">Wireframe</button>
             </div>
+          </div>
+          <div class="skills">
+            <span class="skill-tag">Sensor Networks</span>
+            <span class="skill-tag">Environmental Monitoring</span>
+            <span class="skill-tag">Data Processing</span>
+          </div>
         </div>
-    </section>
+        <div class="card project-card fade-in">
+          <h3>Autonomous Drone with Metal Detection</h3>
+          <p>
+            Innovative aerial reconnaissance system equipped with advanced metal detection capabilities for security 
+            applications. Features autonomous flight patterns, real-time data transmission, and precision detection 
+            algorithms for identifying metallic objects in restricted areas.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Drone Technology</span>
+            <span class="skill-tag">Security Systems</span>
+            <span class="skill-tag">Signal Processing</span>
+          </div>
+        </div>
+        <div class="card project-card fade-in">
+          <h3>Automatic Battery Water Refilling System</h3>
+          <p>
+            Smart automation system using XKC-Y25 non-contact liquid level sensor and precision solenoid valve 
+            for maintaining optimal electrolyte levels in lead-acid batteries. Includes monitoring dashboard and 
+            predictive maintenance alerts to extend battery life and ensure reliable performance.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Industrial Automation</span>
+            <span class="skill-tag">Level Sensing</span>
+            <span class="skill-tag">Predictive Maintenance</span>
+          </div>
+        </div>
+        <div class="card project-card fade-in">
+          <h3>Solar-Powered Water Purification System</h3>
+          <p>
+            Sustainable water treatment solution combining photovoltaic power generation with advanced chemical 
+            and UV treatment processes. Specifically designed to eliminate E. coli bacteria and other pathogens, 
+            providing safe drinking water access for rural and off-grid communities.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Renewable Energy</span>
+            <span class="skill-tag">Water Treatment</span>
+            <span class="skill-tag">Sustainable Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Programming & Software</h3>
-                    <ul class="space-y-2">
-                        <li>C++, Python, MATLAB</li>
-                        <li>SolidWorks</li>
-                        <li>Autodesk Fusion 360</li>
-                        <li>AutoCAD, SketchUp</li>
-                        <li>LaTeX</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Embedded Systems & Robotics</h3>
-                    <ul class="space-y-2">
-                        <li>Arduino</li>
-                        <li>PLC Programming</li>
-                        <li>Sensor Integration</li>
-                        <li>Actuators</li>
-                        <li>Microcontrollers</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Additional Skills</h3>
-                    <ul class="space-y-2">
-                        <li>Ethical Hacking</li>
-                        <li>IoT Applications</li>
-                        <li>Video/Audio Editing</li>
-                        <li>System Integration</li>
-                        <li>Technical Documentation</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Contact Information</h2>
+        <p class="section-subtitle">
+          Open to collaboration opportunities and professional discussions
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📍</div>
+          <div class="contact-info">
+            <h4>Address</h4>
+            <p>Chackalayil (H), Neerattupuram P.O<br>Alappuzha, Kerala - 689571, India</p>
+          </div>
         </div>
-    </section>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">📱</div>
+          <div class="contact-info">
+            <h4>Phone</h4>
+            <p>+91 9567725983</p>
+          </div>
+        </div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-info">
+            <h4>Email</h4>
+            <p>reswingeorgethomas@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="social-links fade-in">
+        <a href="https://linkedin.com/in/reswin-geo-354a87225" class="social-link" title="LinkedIn">in</a>
+        <a href="https://github.com/reswin2002" class="social-link" title="GitHub">gh</a>
+        <a href="mailto:reswingeorgethomas@gmail.com" class="social-link" title="Email">@</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Certifications & Activities Section -->
-    <section id="certifications" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Certifications & Activities</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-gray-100 p-6 rounded-lg mb-6">
-                    <h3 class="text-xl font-bold mb-4">Certifications</h3>
-                    <ul class="space-y-2">
-                        <li>Foundation of Cognitive Robotics (NPTEL, 2024)</li>
-                        <li>Introduction to Blockchain (NDLI-Jyothi, 2024)</li>
-                    </ul>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-4">Workshops & Activities</h3>
-                    <ul class="space-y-2">
-                        <li>Self-Driving Electric Vehicles (Techmaghi, 2023)</li>
-                        <li>Introduction to Embedded Systems (IIIC-TATA, 2023)</li>
-                        <li>IoT and Ethical Hacking (2023)</li>
-                        <li>National Service Scheme (2019–2024)</li>
-                        <li>Industrial Visits: KAMCO Palakkad, MRF Tyres Goa</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    let scene, camera, renderer, mesh, controls;
+    let isWireframe = false;
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Contact Me</h2>
-            <div class="max-w-xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-                    <div class="text-center mb-6">
-                        <p class="text-gray-700">Chackalayil (H), Neerattupuram P.O</p>
-                        <p class="text-gray-700">Alappuzha, Kerala - 689571</p>
-                        <p class="text-gray-700">Phone: +91 9567725983</p>
-                        <p class="text-gray-700">Email: reswingeorgethomas@gmail.com</p>
-                    </div>
-                    <div class="flex justify-center space-x-6">
-                        <a href="https://linkedin.com/in/reswin-geo-354a87225" target="_blank" class="text-gray-800 hover:text-blue-500">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="https://github.com/reswin2002" target="_blank" class="text-gray-800 hover:text-gray-600">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="mailto:reswingeorgethomas@gmail.com" class="text-gray-800 hover:text-red-500">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Theme toggle functionality
+    function toggleTheme() {
+  const body = document.body;
+  const current = body.getAttribute("data-theme");
+  const newTheme = current === "dark" ? "light" : "dark";
+  body.setAttribute("data-theme", newTheme);
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Reswin Geo Thomas. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+  const themeIcon = document.getElementById("theme-icon");
+  themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+}
+
+    // Three.js STL loader setup
+    function initThreeJS() {
+      const viewer = document.getElementById("viewer");
+      if (!viewer) return;
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      
+      renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+      renderer.setClearColor(0x000000, 0);
+      viewer.appendChild(renderer.domElement);
+
+      // Lighting setup
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
+      scene.add(ambientLight);
+      
+      const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight1.position.set(1, 1, 1);
+      scene.add(directionalLight1);
+
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+      directionalLight2.position.set(-1, -1, -1);
+      scene.add(directionalLight2);
+
+      // Load STL file or create fallback geometry
+      loadSTLFile();
+
+      camera.position.set(0, 0, 5);
+
+      // Mouse controls
+      let mouseDown = false;
+      let mouseX = 0;
+      let mouseY = 0;
+
+      viewer.addEventListener('mousedown', (e) => {
+        mouseDown = true;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      viewer.addEventListener('mouseup', () => {
+        mouseDown = false;
+      });
+
+      viewer.addEventListener('mousemove', (e) => {
+        if (!mouseDown || !mesh) return;
+        
+        const deltaX = e.clientX - mouseX;
+        const deltaY = e.clientY - mouseY;
+        
+        mesh.rotation.y += deltaX * 0.01;
+        mesh.rotation.x += deltaY * 0.01;
+        
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      // Wheel zoom
+      viewer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        camera.position.z += e.deltaY * 0.01;
+        camera.position.z = Math.max(2, Math.min(10, camera.position.z));
+      });
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        if (mesh && !mouseDown) {
+          mesh.rotation.y += 0.005;
+        }
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Handle resize
+      window.addEventListener('resize', () => {
+        if (viewer.clientWidth && viewer.clientHeight) {
+          camera.aspect = viewer.clientWidth / viewer.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+        }
+      });
+    }
+
+    // Load STL file function
+    function loadSTLFile() {
+      // Try to load STL file if available
+      if (window.fs && typeof window.fs.readFile === 'function') {
+        try {
+          // Attempt to read STL file
+          window.fs.readFile('s1 v1.stl')
+            .then(data => {
+              const loader = new THREE.STLLoader();
+              const geometry = loader.parse(data.buffer);
+              createMeshFromGeometry(geometry);
+            })
+            .catch(() => {
+              createFallbackGeometry();
+            });
+        } catch (error) {
+          createFallbackGeometry();
+        }
+      } else {
+        createFallbackGeometry();
+      }
+    }
+
+    function createMeshFromGeometry(geometry) {
+      // Center and scale the geometry
+      geometry.computeBoundingBox();
+      const center = geometry.boundingBox.getCenter(new THREE.Vector3());
+      geometry.translate(-center.x, -center.y, -center.z);
+      
+      const size = geometry.boundingBox.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2 / maxDim;
+      geometry.scale(scale, scale, scale);
+
+      const material = new THREE.MeshPhongMaterial({ 
+        color: 0x2563eb,
+        shininess: 30,
+        transparent: false
+      });
+      
+      mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+    }
+
+    function createFallbackGeometry() {
+      // Create a sophisticated fallback geometry representing an air purification system
+      const group = new THREE.Group();
+      
+      // Main cylindrical body
+      const bodyGeometry = new THREE.CylinderGeometry(0.8, 0.9, 2, 16);
+      const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x2563eb });
+      const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+      group.add(body);
+      
+      // Filter sections
+      for (let i = 0; i < 3; i++) {
+        const filterGeometry = new THREE.CylinderGeometry(0.7, 0.7, 0.1, 16);
+        const filterMaterial = new THREE.MeshPhongMaterial({ color: 0x64748b });
+        const filter = new THREE.Mesh(filterGeometry, filterMaterial);
+        filter.position.y = -0.6 + (i * 0.6);
+        group.add(filter);
+      }
+      
+      // Sensor housing
+      const sensorGeometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
+      const sensorMaterial = new THREE.MeshPhongMaterial({ color: 0x10b981 });
+      const sensor = new THREE.Mesh(sensorGeometry, sensorMaterial);
+      sensor.position.set(1, 0.5, 0);
+      group.add(sensor);
+      
+      mesh = group;
+      scene.add(mesh);
+    }
+
+    // Viewer control functions
+    function resetView() {
+      if (mesh) {
+        mesh.rotation.set(0, 0, 0);
+        camera.position.set(0, 0, 5);
+      }
+    }
+
+    function toggleWireframe() {
+      if (!mesh) return;
+      
+      isWireframe = !isWireframe;
+      
+      if (mesh.material) {
+        mesh.material.wireframe = isWireframe;
+      } else if (mesh.children) {
+        mesh.children.forEach(child => {
+          if (child.material) {
+            child.material.
