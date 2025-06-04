@@ -687,16 +687,26 @@
     let isWireframe = false;
 
     // Theme toggle functionality
-   function toggleTheme() {
-  const body = document.body;
-  const current = body.getAttribute("data-theme");
-  const newTheme = current === "dark" ? "light" : "dark";
-  body.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-
-  const themeIcon = document.getElementById("theme-icon");
-  themeIcon.textContent = newTheme === "dark" ? "🌙" : "☀️";
+  <script>
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  document.getElementById('theme-icon').textContent = theme === 'dark' ? '🌙' : '☀️';
 }
+
+function toggleTheme() {
+  const current = document.body.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+  // Optionally persist
+  localStorage.setItem('theme', newTheme);
+}
+
+// Optional: restore persisted theme on load
+window.addEventListener('DOMContentLoaded', function() {
+  const saved = localStorage.getItem('theme');
+  setTheme(saved || 'dark');
+});
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme") || "dark";
