@@ -687,15 +687,22 @@
     let isWireframe = false;
 
     // Theme toggle functionality
-    function toggleTheme() {
+   function toggleTheme() {
   const body = document.body;
   const current = body.getAttribute("data-theme");
   const newTheme = current === "dark" ? "light" : "dark";
   body.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
 
   const themeIcon = document.getElementById("theme-icon");
-  themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+  themeIcon.textContent = newTheme === "dark" ? "🌙" : "☀️";
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  document.body.setAttribute("data-theme", savedTheme);
+  document.getElementById("theme-icon").textContent = savedTheme === "dark" ? "🌙" : "☀️";
+});
 
     // Three.js STL loader setup
     function initThreeJS() {
