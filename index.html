@@ -421,6 +421,25 @@
       margin-top: 3rem;
     }
 
+    /* Project section box */
+    .project-section-box {
+  background: linear-gradient(135deg, #f3f6fb 60%, #e5e7eb 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(60, 60, 120, 0.08);
+  padding: 2.5rem 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  border: 1.5px solid var(--border);
+  max-width: 100%;      /* Make it as wide as the container */
+  width: 100%;          /* Ensure full width */
+}
+
+[data-theme='dark'] .project-section-box {
+  background: linear-gradient(135deg, #232c43 60%, #1a2238 100%);
+  border: 1.5px solid #28304a;
+}
+
     /* Responsive design */
     @media (max-width: 768px) {
       .hero {
@@ -469,6 +488,55 @@
         transform: translateY(0);
       }
     }
+
+    .related-files-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.related-files-floating-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+  margin: -2.5rem 2.5rem 2.5rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.related-files-floating-btn .btn {
+  box-shadow: 0 4px 16px 0 rgba(60, 60, 120, 0.10);
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  background: #fff;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  transition: background 0.2s, color 0.2s;
+}
+
+.related-files-floating-btn .btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+[data-theme='dark'] .related-files-floating-btn .btn {
+  background: #232c43;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
   </style>
 </head>
 <body data-theme="light">
@@ -581,66 +649,71 @@
           Innovative engineering solutions addressing real-world challenges
         </p>
       </div>
-      <div class="project-grid">
-        <div class="card project-card fade-in">
-          <h3>Atmospheric Air Rectification System</h3>
-          <p>
-            Advanced air purification system utilizing MQ135, MQ136, and TGS2600 sensors for real-time pollutant 
-            detection and filtration. The system actively monitors air quality parameters and automatically adjusts 
-            filtration mechanisms to improve roadside air quality in urban environments.
-          </p>
-          <div class="viewer-container">
-            <div id="viewer"></div>
-            <div class="viewer-controls">
-              <button class="viewer-btn" onclick="resetView()">Reset</button>
-              <button class="viewer-btn" onclick="toggleWireframe()">Wireframe</button>
+      <div class="project-section-box">
+        <div class="project-grid">
+          <div class="card project-card fade-in">
+            <h3>Atmospheric Air Rectification System</h3>
+            <p>
+              Advanced air purification system utilizing MQ135, MQ136, and TGS2600 sensors for real-time pollutant 
+              detection and filtration. The system actively monitors air quality parameters and automatically adjusts 
+              filtration mechanisms to improve roadside air quality in urban environments.
+            </p>
+            <div class="viewer-container">
+              <div id="viewer"></div>
+              <div class="viewer-controls">
+                <button class="viewer-btn" onclick="resetView()">Reset</button>
+                <button class="viewer-btn" onclick="toggleWireframe()">Wireframe</button>
+              </div>
+            </div>
+            <div class="skills">
+              <span class="skill-tag">Sensor Networks</span>
+              <span class="skill-tag">Environmental Monitoring</span>
+              <span class="skill-tag">Data Processing</span>
             </div>
           </div>
-          <div class="skills">
-            <span class="skill-tag">Sensor Networks</span>
-            <span class="skill-tag">Environmental Monitoring</span>
-            <span class="skill-tag">Data Processing</span>
+          <div class="card project-card fade-in">
+            <h3>Autonomous Drone with Metal Detection</h3>
+            <p>
+              Innovative aerial reconnaissance system equipped with advanced metal detection capabilities for security 
+              applications. Features autonomous flight patterns, real-time data transmission, and precision detection 
+              algorithms for identifying metallic objects in restricted areas.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">Drone Technology</span>
+              <span class="skill-tag">Security Systems</span>
+              <span class="skill-tag">Signal Processing</span>
+            </div>
+          </div>
+          <div class="card project-card fade-in">
+            <h3>Automatic Battery Water Refilling System</h3>
+            <p>
+              Smart automation system using XKC-Y25 non-contact liquid level sensor and precision solenoid valve 
+              for maintaining optimal electrolyte levels in lead-acid batteries. Includes monitoring dashboard and 
+              predictive maintenance alerts to extend battery life and ensure reliable performance.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">Industrial Automation</span>
+              <span class="skill-tag">Level Sensing</span>
+              <span class="skill-tag">Predictive Maintenance</span>
+            </div>
+          </div>
+          <div class="card project-card fade-in">
+            <h3>Solar-Powered Water Purification System</h3>
+            <p>
+              Sustainable water treatment solution combining photovoltaic power generation with advanced chemical 
+              and UV treatment processes. Specifically designed to eliminate E. coli bacteria and other pathogens, 
+              providing safe drinking water access for rural and off-grid communities.
+            </p>
+            <div class="skills">
+              <span class="skill-tag">Renewable Energy</span>
+              <span class="skill-tag">Water Treatment</span>
+              <span class="skill-tag">Sustainable Design</span>
+            </div>
           </div>
         </div>
-        <div class="card project-card fade-in">
-          <h3>Autonomous Drone with Metal Detection</h3>
-          <p>
-            Innovative aerial reconnaissance system equipped with advanced metal detection capabilities for security 
-            applications. Features autonomous flight patterns, real-time data transmission, and precision detection 
-            algorithms for identifying metallic objects in restricted areas.
-          </p>
-          <div class="skills">
-            <span class="skill-tag">Drone Technology</span>
-            <span class="skill-tag">Security Systems</span>
-            <span class="skill-tag">Signal Processing</span>
-          </div>
-        </div>
-        <div class="card project-card fade-in">
-          <h3>Automatic Battery Water Refilling System</h3>
-          <p>
-            Smart automation system using XKC-Y25 non-contact liquid level sensor and precision solenoid valve 
-            for maintaining optimal electrolyte levels in lead-acid batteries. Includes monitoring dashboard and 
-            predictive maintenance alerts to extend battery life and ensure reliable performance.
-          </p>
-          <div class="skills">
-            <span class="skill-tag">Industrial Automation</span>
-            <span class="skill-tag">Level Sensing</span>
-            <span class="skill-tag">Predictive Maintenance</span>
-          </div>
-        </div>
-        <div class="card project-card fade-in">
-          <h3>Solar-Powered Water Purification System</h3>
-          <p>
-            Sustainable water treatment solution combining photovoltaic power generation with advanced chemical 
-            and UV treatment processes. Specifically designed to eliminate E. coli bacteria and other pathogens, 
-            providing safe drinking water access for rural and off-grid communities.
-          </p>
-          <div class="skills">
-            <span class="skill-tag">Renewable Energy</span>
-            <span class="skill-tag">Water Treatment</span>
-            <span class="skill-tag">Sustainable Design</span>
-          </div>
-        </div>
+        <div class="related-files-btn" style="margin-top:2rem; display:flex; justify-content:flex-end;">
+    <a href="projects.html" class="btn btn-secondary" target="_blank">Related Files</a>
+  </div>
       </div>
     </div>
   </section>
@@ -663,14 +736,14 @@
           </div>
         </div>
         <div class="contact-item fade-in">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg></div>
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></div>
           <div class="contact-info">
             <h4>Phone</h4>
             <p>+91 9567725983</p>
           </div>
         </div>
         <div class="contact-item fade-in">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></div>
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></div>
           <div class="contact-info">
             <h4>Email</h4>
             <p>reswingeorgethomas@gmail.com</p>
@@ -678,7 +751,7 @@
         </div>
       </div>
       <div class="social-links fade-in">
-        <a href="https://linkedin.com/in/reswin-geo-354a87225" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+        <a href="https://linkedin.com/in/reswin-geo-354a87225" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></a>
         <a href="https://github.com/reswin2002" class="social-link" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M448 96c0-35.3-28.7-64-64-64H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96zM265.8 407.7c0-1.8 0-6 .1-11.6c.1-11.4 .1-28.8 .1-43.7c0-15.6-5.2-25.5-11.3-30.7c37-4.1 76-9.2 76-73.1c0-18.2-6.5-27.3-17.1-39c1.7-4.3 7.4-22-1.7-45c-13.9-4.3-45.7 17.9-45.7 17.9c-13.2-3.7-27.5-5.6-41.6-5.6s-28.4 1.9-41.6 5.6c0 0-31.8-22.2-45.7-17.9c-9.1 22.9-3.5 40.6-1.7 45c-10.6 11.7-15.6 20.8-15.6 39c0 63.6 37.3 69 74.3 73.1c-4.8 4.3-9.1 11.7-10.6 22.3c-9.5 4.3-33.8 11.7-48.3-13.9c-9.1-15.8-25.5-17.1-25.5-17.1c-16.2-.2-1.1 10.2-1.1 10.2c10.8 5 18.4 24.2 18.4 24.2c9.7 29.7 56.1 19.7 56.1 19.7c0 9 .1 21.7 .1 30.6c0 4.8 .1 8.6 .1 10c0 4.3-3 9.5-11.5 8C106 393.6 59.8 330.8 59.8 257.4c0-91.8 70.2-161.5 162-161.5s166.2 69.7 166.2 161.5c.1 73.4-44.7 136.3-110.7 158.3c-8.4 1.5-11.5-3.7-11.5-8zm-90.5-54.8c-.2-1.5 1.1-2.8 3-3.2c1.9-.2 3.7 .6 3.9 1.9c.3 1.3-1 2.6-3 3c-1.9 .4-3.7-.4-3.9-1.7zm-9.1 3.2c-2.2 .2-3.7-.9-3.7-2.4c0-1.3 1.5-2.4 3.5-2.4c1.9-.2 3.7 .9 3.7 2.4c0 1.3-1.5 2.4-3.5 2.4zm-14.3-2.2c-1.9-.4-3.2-1.9-2.8-3.2s2.4-1.9 4.1-1.5c2 .6 3.3 2.1 2.8 3.4c-.4 1.3-2.4 1.9-4.1 1.3zm-12.5-7.3c-1.5-1.3-1.9-3.2-.9-4.1c.9-1.1 2.8-.9 4.3 .6c1.3 1.3 1.8 3.3 .9 4.1c-.9 1.1-2.8 .9-4.3-.6zm-8.5-10c-1.1-1.5-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3c1.1 1.5 1.1 3.3 0 4.1c-.9 .6-2.6 0-3.7-1.5zm-6.3-8.8c-1.1-1.3-1.3-2.8-.4-3.5c.9-.9 2.4-.4 3.5 .6c1.1 1.3 1.3 2.8 .4 3.5c-.9 .9-2.4 .4-3.5-.6zm-6-6.4c-1.3-.6-1.9-1.7-1.5-2.6c.4-.6 1.5-.9 2.8-.4c1.3 .7 1.9 1.8 1.5 2.6c-.4 .9-1.7 1.1-2.8 .4z"/></svg></a>
         <a href="mailto:reswingeorgethomas@gmail.com" class="social-link" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM218 271.7L64.2 172.4C66 156.4 79.5 144 96 144l256 0c16.5 0 30 12.4 31.8 28.4L230 271.7c-1.8 1.2-3.9 1.8-6 1.8s-4.2-.6-6-1.8zm29.4 26.9L384 210.4 384 336c0 17.7-14.3 32-32 32L96 368c-17.7 0-32-14.3-32-32l0-125.6 136.6 88.2c7 4.5 15.1 6.9 23.4 6.9s16.4-2.4 23.4-6.9z"/></svg></a>
     </div>
