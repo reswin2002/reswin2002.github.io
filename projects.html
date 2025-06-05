@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reswin Geo Thomas - Projects</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --accent: #0ea5e9;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+    [data-theme='light'] {
+      --bg: #f6f8fa;
+      --surface: #ffffff;
+      --card: #f3f6fb;
+      --text: #1a2238;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: rgba(30, 41, 59, 0.08);
+      --nav-bg: rgba(255, 255, 255, 0.95);
+    }
+    [data-theme='dark'] {
+      --bg: #1a2238;
+      --surface: #222b45;
+      --card: #232c43;
+      --text: #f5f6fa;
+      --text-muted: #a1a7bb;
+      --border: #28304a;
+      --shadow: rgba(30, 41, 59, 0.25);
+      --nav-bg: rgba(34, 43, 69, 0.95);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      border: 4px solid #000;
+      border-radius: 18px;
+      margin: 16px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    .nav {
+      position: static;
+      display: flex;
+      gap: 0.5rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s ease;
+      max-width: 325px;
+      margin: 2rem 2rem 0 auto;
+      z-index: 1000;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .nav-item {
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      position: relative;
+      background: none;
+      border: none;
+      outline: none;
+    }
+    .nav-item:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .project-section-box {
+      background: linear-gradient(135deg, #f3f6fb 60%, #e5e7eb 100%);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(60, 60, 120, 0.08);
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+      border: 1.5px solid var(--border);
+      max-width: 100%;
+      width: 100%;
+    }
+    [data-theme='dark'] .project-section-box {
+      background: linear-gradient(135deg, #232c43 60%, #1a2238 100%);
+      border: 1.5px solid #28304a;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+    .project-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .project-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .viewer-container {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1rem 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .skill-tag {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .related-files-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      position: relative;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .clock-box {
+      min-width: 120px;
+      padding: 0.4rem 1.1rem;
+      border-radius: 12px;
+      background: #111;
+      color: #fff;
+      font-family: monospace;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0 0.5rem;
+      letter-spacing: 1px;
+      border: 1.5px solid #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.3s, color 0.3s;
+    }
+    [data-theme='dark'] .clock-box {
+      background: #fff;
+      color: #111;
+      border: 1.5px solid #eee;
+    }
+    @media (max-width: 768px) {
+      .nav {
+        position: relative;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        margin: 1rem auto;
+        width: fit-content;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+      .project-section-box {
+        padding: 1.5rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="https://reswin2002.github.io" class="nav-item">Home</a>
+    <div class="nav-item clock-box" id="clock"></div>
+    <button class="nav-item theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">☀️</span>
+    </button>
+  </div>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Showcase of my engineering builds and prototypes</p>
+      </div>
+      <div class="project-section-box">
+        <div class="card project-card fade-in">
+          <h3>Quad Robot</h3>
+          <p>
+            A quadruped robot designed for walking and terrain adaptation, showcasing complex leg kinematics.
+            <a href="https://a360.co/3PUbEvQ" target="_blank">[View in Autodesk Viewer]</a>
+          </p>
+          <div class="viewer-container">
+            <iframe
+              src="https://a360.co/3PUbEvQ"
+              style="width: 100%; height: 100%; border: none; border-radius: 10px;"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="skills">
+            <span class="skill-tag">Leg Kinematics</span>
+            <span class="skill-tag">3D CAD</span>
+            <span class="skill-tag">Robot Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleTheme() {
+      const current = document.body.getAttribute('data-theme');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', newTheme);
+      document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '🌙' : '☀️';
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, '0');
+      const m = now.getMinutes().toString().padStart(2, '0');
+      const s = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
