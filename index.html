@@ -659,15 +659,7 @@
               filtration mechanisms to improve roadside air quality in urban environments.
             </p>
             <div class="viewer-container">
-  <a href="https://a360.co/45IpIS6" target="_blank" style="display:block;width:100%;height:100%;">
-    <iframe
-      src="https://github.com/reswin2002/reswin2002.github.io/raw/main/main%20PROJECTT%20v4.stl"
-      style="width: 100%; height: 100%; border: none; border-radius: 10px; pointer-events: none;"
-      title="3D STL Model Preview"
-      tabindex="-1">
-    </iframe>
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;cursor:pointer;"></div>
-  </a>
+  <div id="viewer" style="width:100%;height:100%;"></div>
 </div>
             <div class="skills">
               <span class="skill-tag">Sensor Networks</span>
@@ -763,6 +755,7 @@
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
   <script>
     let scene, camera, renderer, mesh, controls;
     let isWireframe = false;
@@ -793,7 +786,7 @@
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      
+
       renderer.setSize(viewer.clientWidth, viewer.clientHeight);
       renderer.setClearColor(0x000000, 0);
       viewer.appendChild(renderer.domElement);
@@ -801,7 +794,7 @@
       // Lighting setup
       const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
       scene.add(ambientLight);
-      
+
       const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
       directionalLight1.position.set(1, 1, 1);
       scene.add(directionalLight1);
@@ -810,8 +803,33 @@
       directionalLight2.position.set(-1, -1, -1);
       scene.add(directionalLight2);
 
-      // Create fallback geometry
-      createFallbackGeometry();
+      // STL Loader
+      const loader = new THREE.STLLoader();
+      loader.load(
+        'https://raw.githubusercontent.com/reswin2002/reswin2002.github.io/main/main%20PROJECTT%20v4.stl',
+        function (geometry) {
+          // Center and scale the geometry
+          geometry.computeBoundingBox();
+          const center = new THREE.Vector3();
+          geometry.boundingBox.getCenter(center);
+          geometry.center(); // Center geometry at origin
+
+          // Auto scale to fit viewer
+          const size = new THREE.Vector3();
+          geometry.boundingBox.getSize(size);
+          const maxDim = Math.max(size.x, size.y, size.z);
+          const scale = 2 / maxDim; // 2 units fits nicely in camera view
+          geometry.scale(scale, scale, scale);
+
+          const material = new THREE.MeshPhongMaterial({ color: 0x2563eb });
+          mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+        },
+        undefined,
+        function (error) {
+          console.error('Error loading STL:', error);
+        }
+      );
 
       camera.position.set(0, 0, 5);
 
@@ -853,9 +871,9 @@
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
-        if (mesh && !mouseDown) {
-          mesh.rotation.y += 0.005;
-        }
+        // if (mesh && !mouseDown) {
+        //   mesh.rotation.y += 0.005;
+        // }
         renderer.render(scene, camera);
       }
       animate();
