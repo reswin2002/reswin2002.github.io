@@ -294,6 +294,11 @@
       height: 100%;
     }
 
+    #viewer, #viewer canvas {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
     .viewer-controls {
       position: absolute;
       top: 10px;
@@ -813,7 +818,13 @@
     // Three.js STL loader setup
     function initThreeJS() {
       const viewer = document.getElementById("viewer");
-      if (!viewer) return;
+      if (viewer) {
+  // Prevent drag & drop from triggering a download
+  viewer.addEventListener('dragover', e => e.preventDefault());
+  viewer.addEventListener('drop', e => e.preventDefault());
+  // Prevent accidental navigation/download on click
+  viewer.addEventListener('click', e => e.preventDefault());
+}
 
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
