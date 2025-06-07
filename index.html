@@ -14,6 +14,32 @@
   margin: 16px;                /* Space between border and window edge */
   box-sizing: border-box;      /* Ensure border is included in sizing */
 }
+html, body {
+ /* background: transparent !important;*/
+}
+
+.main-box {
+  position: relative;
+  background: transparent !important;
+  overflow: hidden;
+   min-height: 100vh; /* Ensures it fills the viewport */
+
+  /* Add your border, radius, etc. here if needed */
+}
+
+.lantern-bg-dark {
+  display: none;
+}
+[data-theme="dark"] .lantern-bg-dark {
+  display: block;
+}
+.lantern-bg-dark .background-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #2b2447 0%, #5A4A94 35%, #7B6BC6 100%);
+}
   :root {
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
@@ -138,6 +164,8 @@
       color: var(--text);
       margin-bottom: 1rem;
       animation: slideInLeft 1s ease-out;
+       position: relative;
+       z-index: 2;
     }
 
     .hero-subtitle {
@@ -571,10 +599,304 @@
   background: var(--primary-dark);
   opacity: 1;
 }
+
+.lantern-bg-dark {
+  display: none;
+}
+[data-theme="dark"] .lantern-bg-dark {
+  display: block;
+}
+.lantern-bg-dark .background-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #2a2346 0%, #5A4A94 35%, #7B6BC6 100%);
+}
+.lanternHills {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  height: 200px;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/lanternHills.png");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: auto 200px;
+  z-index: 1;
+}
+.star { background-color: white; position: absolute; border-radius: 50%; animation: twinkle 3s infinite ease-in-out; }
+@keyframes twinkle { 0%,100%{opacity:.3;transform:scale(1);} 50%{opacity:1;transform:scale(1.2);} }
+.star1 { width:2px;height:2px;left:5%;top:10%;animation-delay:0s; }
+.star2 { width:3px;height:3px;left:12%;top:15%;animation-delay:.5s; }
+.star3 { width:1px;height:1px;left:25%;top:8%;animation-delay:1s; }
+.star4 { width:2px;height:2px;left:35%;top:20%;animation-delay:1.5s; }
+.star5 { width:3px;height:3px;left:45%;top:12%;animation-delay:2s; }
+.star6 { width:1px;height:1px;left:55%;top:25%;animation-delay:2.5s; }
+.star7 { width:2px;height:2px;left:65%;top:7%;animation-delay:.2s; }
+.star8 { width:3px;height:3px;left:75%;top:18%;animation-delay:.7s; }
+.star9 { width:1px;height:1px;left:85%;top:22%;animation-delay:1.2s; }
+.star10 { width:2px;height:2px;left:95%;top:14%;animation-delay:1.7s; }
+.star11 { width:3px;height:3px;left:8%;top:35%;animation-delay:.3s; }
+.star12 { width:1px;height:1px;left:18%;top:42%;animation-delay:.8s; }
+.star13 { width:2px;height:2px;left:28%;top:38%;animation-delay:1.3s; }
+.star14 { width:3px;height:3px;left:38%;top:45%;animation-delay:1.8s; }
+.star15 { width:1px;height:1px;left:48%;top:32%;animation-delay:2.3s; }
+.star16 { width:2px;height:2px;left:58%;top:48%;animation-delay:.4s; }
+.star17 { width:3px;height:3px;left:68%;top:35%;animation-delay:.9s; }
+.star18 { width:1px;height:1px;left:78%;top:42%;animation-delay:1.4s; }
+.star19 { width:2px;height:2px;left:88%;top:38%;animation-delay:1.9s; }
+.star20 { width:3px;height:3px;left:92%;top:45%;animation-delay:2.4s; }
+.star21 { width:1px;height:1px;left:15%;top:5%;animation-delay:.6s; }
+.star22 { width:2px;height:2px;left:40%;top:3%;animation-delay:1.1s; }
+.star23 { width:3px;height:3px;left:70%;top:6%;animation-delay:1.6s; }
+.star24 { width:1px;height:1px;left:90%;top:4%;animation-delay:2.1s; }
+.star25 { width:2px;height:2px;left:3%;top:25%;animation-delay:1.8s; }
+.star26 { width:3px;height:3px;left:10%;top:30%;animation-delay:2.3s; }
+.star27 { width:1px;height:1px;left:20%;top:28%;animation-delay:.4s; }
+.star28 { width:2px;height:2px;left:30%;top:35%;animation-delay:1.2s; }
+.star29 { width:3px;height:3px;left:75%;top:10%;animation-delay:.7s; }
+.star30 { width:1px;height:1px;left:85%;top:20%;animation-delay:1.5s; }
+.lanternContainer { position: absolute; width: 100%; height: 100%; overflow: hidden; }
+.lanternX1 { position: absolute; bottom: 50px; left: 5%; animation: lanternX1 8s infinite ease-in-out; }
+.lanternY1 { width: 60px; z-index: 2000; animation: lanternY 12s infinite linear; animation-delay: 1s; opacity: 0.9; }
+.lanternX2 { position: absolute; bottom: 80px; left: 20%; animation: lanternX2 10s infinite ease-in-out; }
+.lanternY2 { width: 80px; z-index: 3000; animation: lanternY 16s infinite linear; animation-delay: 3s; opacity: 0.9; }
+.lanternX3 { position: absolute; bottom: 40px; left: 40%; animation: lanternX3 7s infinite ease-in-out; }
+.lanternY3 { width: 65px; z-index: 2500; animation: lanternY 14s infinite linear; animation-delay: 2s; opacity: 0.9; }
+.lanternX4 { position: absolute; bottom: 70px; left: 60%; animation: lanternX4 9s infinite ease-in-out; }
+.lanternY4 { width: 75px; z-index: 3500; animation: lanternY 10s infinite linear; animation-delay: 4s; opacity: 0.9; }
+.lanternX5 { position: absolute; bottom: 30px; left: 80%; animation: lanternX5 11s infinite ease-in-out; }
+.lanternY5 { width: 70px; z-index: 4000; animation: lanternY 18s infinite linear; animation-delay: 1.5s; opacity: 0.9; }
+.lanternX6 { position: absolute; bottom: 60px; left: 15%; animation: lanternX6 6s infinite ease-in-out; }
+.lanternY6 { width: 55px; z-index: 1500; animation: lanternY 20s infinite linear; animation-delay: 5s; opacity: 0.9; }
+@keyframes lanternX1 { 50% { transform: translateX(50px); } }
+@keyframes lanternX2 { 50% { transform: translateX(-30px); } }
+@keyframes lanternX3 { 50% { transform: translateX(70px); } }
+@keyframes lanternX4 { 50% { transform: translateX(-45px); } }
+@keyframes lanternX5 { 50% { transform: translateX(25px); } }
+@keyframes lanternX6 { 50% { transform: translateX(-60px); } }
+@keyframes lanternY {
+  0% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(-900px); opacity: 1; }
+  100% { transform: translateY(-1500px); opacity: 0; }
+}
+
+/* Make lanterns float slower (increase duration) */
+.lanternY1 { animation: lanternY 12s infinite linear; animation-delay: 1s; }
+.lanternY2 { animation: lanternY 16s infinite linear; animation-delay: 3s; }
+.lanternY3 { animation: lanternY 14s infinite linear; animation-delay: 2s; }
+.lanternY4 { animation: lanternY 10s infinite linear; animation-delay: 4s; }
+.lanternY5 { animation: lanternY 18s infinite linear; animation-delay: 1.5s; }
+.lanternY6 { animation: lanternY 20s infinite linear; animation-delay: 5s; }
+
+.night {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shooting_star {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: shoot 5s infinite;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-100vw);
+    opacity: 0;
+  }
+}
+
+/* Adjusting star animation for different screen sizes */
+@media (max-width: 768px) {
+  .shooting_star {
+    width: 1.5px;
+    height: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shooting_star {
+    width: 1px;
+    height: 1px;
+  }
+}
+
+[data-theme="dark"] body {
+  background: radial-gradient(ellipse at bottom, #7B6BC6 0%, #5A4A94 35%, #2a2346 100%);
+  font-family: 'Anton', sans-serif;
+}
+
+[data-theme="dark"] .night {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  left: 0;
+  top: 80px;
+  transform: rotateZ(15deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme="dark"] .shooting_star {
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+  animation:
+    tail 6s ease-in-out infinite,
+    shooting 6s ease-in-out infinite;
+}
+[data-theme="dark"] .shooting_star::before,
+[data-theme="dark"] .shooting_star::after {
+  content: '';
+  position: absolute;
+  top: calc(85% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+  border-radius: 100%;
+  animation: shining 6s ease-in-out infinite;
+}
+[data-theme="dark"] .shooting_star::before {
+  height: 5px;
+  transform: translateX(50%) rotateZ(15deg);
+}
+[data-theme="dark"] .shooting_star::after {
+  height: 2px;
+  transform: translateX(50%) rotateZ(-45deg);
+}
+
+/* Unique delays and positions for each shooting star */
+[data-theme="dark"] .shooting_star:nth-child(1) {
+  top: 30px;
+  left: 10px;
+  animation-delay: 0s;
+}
+[data-theme="dark"] .shooting_star:nth-child(2) {
+  top: 60px;
+  left: 80px;
+  animation-delay: 15s;
+}
+[data-theme="dark"] .shooting_star:nth-child(3) {
+  top: 100px;
+  left: 160px;
+  animation-delay: 9s;
+}
+[data-theme="dark"] .shooting_star:nth-child(4) {
+  top: 50px;
+  left: 220px;
+  animation-delay: 18s;
+}
+[data-theme="dark"] .shooting_star:nth-child(5) {
+  top: 80px;
+  left: 300px;
+  animation-delay: 4s;
+}
+[data-theme="dark"] .shooting_star:nth-child(1)::before,
+[data-theme="dark"] .shooting_star:nth-child(1)::after { animation-delay: 0s; }
+[data-theme="dark"] .shooting_star:nth-child(2)::before,
+[data-theme="dark"] .shooting_star:nth-child(2)::after { animation-delay: 15s; }
+[data-theme="dark"] .shooting_star:nth-child(3)::before,
+[data-theme="dark"] .shooting_star:nth-child(3)::after { animation-delay: 9s; }
+[data-theme="dark"] .shooting_star:nth-child(4)::before,
+[data-theme="dark"] .shooting_star:nth-child(4)::after { animation-delay: 18s; }
+[data-theme="dark"] .shooting_star:nth-child(5)::before,
+[data-theme="dark"] .shooting_star:nth-child(5)::after { animation-delay: 4s; }
+
+@keyframes tail {
+  0% { width: 0; }
+  30% { width: 100px; }
+  100% { width: 0; }
+}
+@keyframes shining {
+  0% { width: 0; }
+  50% { width: 30px; }
+  100% { width: 0; }
+}
+@keyframes shooting {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(700px); }
+}
   </style>
 </head>
 <body data-theme="light">
-  <!-- Navigation -->
+  <div class="main-box">
+    <!-- Lantern background goes here -->
+    <div class="lantern-bg-dark">
+      <div class="background-container">
+        <div class="night">
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+          <div class="shooting_star"></div>
+        </div>
+        <!-- Stars -->
+        <span class="star star1"></span>
+        <span class="star star2"></span>
+        <span class="star star3"></span>
+        <span class="star star4"></span>
+        <span class="star star5"></span>
+        <span class="star star6"></span>
+        <span class="star star7"></span>
+        <span class="star star8"></span>
+        <span class="star star9"></span>
+        <span class="star star10"></span>
+        <span class="star star11"></span>
+        <span class="star star12"></span>
+        <span class="star star13"></span>
+        <span class="star star14"></span>
+        <span class="star star15"></span>
+        <span class="star star16"></span>
+        <span class="star star17"></span>
+        <span class="star star18"></span>
+        <span class="star star19"></span>
+        <span class="star star20"></span>
+        <span class="star star21"></span>
+        <span class="star star22"></span>
+        <span class="star star23"></span>
+        <span class="star star24"></span>
+        <span class="star star25"></span>
+        <span class="star star26"></span>
+        <span class="star star27"></span>
+        <span class="star star28"></span>
+        <span class="star star29"></span>
+        <span class="star star30"></span>
+        <!-- Hills -->
+        <div class="lanternHills"></div>
+        <!-- Lanterns -->
+        <div class="lanternContainer">
+          <div class="lanternX1"><img class="lanternY1" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+          <div class="lanternX2"><img class="lanternY2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+          <div class="lanternX3"><img class="lanternY3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+          <div class="lanternX4"><img class="lanternY4" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+          <div class="lanternX5"><img class="lanternY5" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+          <div class="lanternX6"><img class="lanternY6" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3522775/LanternsLarge.png" alt="Lantern"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Your main content starts here -->
+    <!-- Navigation -->
   <div class="nav">
     <a href="#about" class="nav-item">About</a>
     <a href="#projects" class="nav-item">Projects</a>
